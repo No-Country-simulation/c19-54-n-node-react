@@ -1,7 +1,7 @@
 # c19-54-n-node-react
 <b><p align="left">Descripción del proyecto</p></b>
 
-<p>El proyecto se centra en el desarrollo de una plataforma de e-commerce diseñada específicamente para </p><b><p>artesanos</p></b></p>
+<p>El proyecto se centra en el desarrollo de una plataforma de e-commerce diseñada específicamente para artesanos</p>
 <p>Los objetivos son: </p>
 <ls>
   <li>Proporcionar a los artesanos un espacio digital dedicado para exhibir y vender sus productos de forma directa.</li>
