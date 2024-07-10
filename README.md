@@ -19,6 +19,7 @@ El proyecto se centra en el desarrollo de una plataforma de e-commerce diseñada
 - Matias Martin Murad Pretz - Backend
 - Miguel Angel Tito Rodriguez - Backend
 - Lucila Chaparro - Backend
+- Eric Yoel Ferreyra - Backend
 - Aineska Zacarias - QA
 
 #### Enlaces del Proyecto:
