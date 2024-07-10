@@ -12,6 +12,6 @@ app
   .use(cors())
   .disable('x-powered-by')
   //.use('/noticias', router)
-   .listen(PORT, () => {
+  .listen(PORT, () => {
     console.log(`Server is running on PORT ${PORT}`)
   })
