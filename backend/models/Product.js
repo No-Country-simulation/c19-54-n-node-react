@@ -1,9 +1,14 @@
 import { Schema, model } from 'mongoose'
+
 const ProductSchema = new Schema(
   {
-    title: { type: String, required: true },
+    name: { type: String, required: true },
     description: { type: String },
-    image: { type: String }
+    image: { type: String },
+    original_price: { type: Float64Array},
+    sale_price: {type: Float64Array},
+    categories: { type: [String] },
+    //add seller_id
   },
   { timestamps: true }
 )
