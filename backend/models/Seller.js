@@ -12,4 +12,4 @@ const SellerSchema = new Schema(
   { timestamps: true }
 )
 
-export const Product = model('Product', ProductSchema)
+export const Seller = model('Seller', SellerSchema)
