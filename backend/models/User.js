@@ -6,10 +6,24 @@ const UserSchema = new Schema(
     email: { type: String },
     image: { type: String },
     //add password hashed
-    billing_address: {type: [String]},
-    shipping_address: { type: [String] }
+    billingAddress: { 
+      country: { type: String },
+      street1: { type: String },
+      street2: { type: String },
+      city: { type: String },
+      province: { type: String },
+      zip: { type: String }
+    },
+    shipingAddress: { 
+      country: { type: String },
+      street1: { type: String },
+      street2: { type: String },
+      city: { type: String },
+      province: { type: String },
+      zip: { type: String }
+    }
   },
   { timestamps: true }
 )
 
-export const Product = model('Product', ProductSchema)
+export const User = model('User', UserSchema)

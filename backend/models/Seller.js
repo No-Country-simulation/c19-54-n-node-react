@@ -7,9 +7,16 @@ const SellerSchema = new Schema(
     image: { type: String },
     email: { type: String},
     //add password hashed
-    address: { type: [String] }
+    address: { 
+      country: { type: String },
+      street1: { type: String },
+      street2: { type: String },
+      city: { type: String },
+      province: { type: String },
+      zip: { type: String }
+    }
   },
   { timestamps: true }
 )
 
-export const Product = model('Product', ProductSchema)
+export const Seller = model('Seller', SellerSchema)
