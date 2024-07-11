@@ -9,7 +9,7 @@ const ProductSchema = new Schema(
     salePrice: {type: Float64Array},
     categories: { type: [String] },
     status: { type: String },
-    stock: { type: int },
+    stock: { type: Number },
     sellerId: { type: String, required: true }
   },
   { timestamps: true }
