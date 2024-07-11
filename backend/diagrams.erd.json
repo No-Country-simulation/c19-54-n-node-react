@@ -4,8 +4,8 @@
   "settings": {
     "width": 2000,
     "height": 2000,
-    "scrollTop": -200,
-    "scrollLeft": -1.3115,
+    "scrollTop": 0,
+    "scrollLeft": -61,
     "zoomLevel": 1,
     "show": 431,
     "database": 4,
@@ -1063,20 +1063,20 @@
       "ayvg0Pvh4zuSUVPkd8K7E": {
         "id": "ayvg0Pvh4zuSUVPkd8K7E",
         "tableId": "rHku4ou-WkZeJP6NvzCj8",
-        "name": "billing_adress",
+        "name": "billing_address",
         "comment": "",
         "dataType": "object",
         "default": "",
         "options": 0,
         "ui": {
           "keys": 0,
-          "widthName": 73,
+          "widthName": 80,
           "widthComment": 60,
           "widthDataType": 60,
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1720655491269,
+          "updateAt": 1720701207202,
           "createAt": 1720655475675
         }
       },
@@ -1103,7 +1103,7 @@
       "HEJdSTNVrf7RrQEiwDG3h": {
         "id": "HEJdSTNVrf7RrQEiwDG3h",
         "tableId": "-qj_XU1EMqsSo1mVDCiaF",
-        "name": "pictures",
+        "name": "images",
         "comment": "con limite superior",
         "dataType": "array",
         "default": "",
@@ -1116,7 +1116,7 @@
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1720658206281,
+          "updateAt": 1720702076822,
           "createAt": 1720656751763
         }
       },
@@ -1183,7 +1183,7 @@
       "m3Nyxum0MuHVfMu9BJAXF": {
         "id": "m3Nyxum0MuHVfMu9BJAXF",
         "tableId": "BczAtEgBGxKbrf4UJx6Yw",
-        "name": "pictures",
+        "name": "images",
         "comment": "imágenes ilustrativas del vendedor/tienda",
         "dataType": "array",
         "default": "",
@@ -1196,7 +1196,7 @@
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1720657350013,
+          "updateAt": 1720702062997,
           "createAt": 1720657194089
         }
       },
@@ -1303,7 +1303,7 @@
       "QwTQAr6v8knNLTGU9wKvq": {
         "id": "QwTQAr6v8knNLTGU9wKvq",
         "tableId": "7no1hUnlRBHluT490KvD7",
-        "name": "picture",
+        "name": "image",
         "comment": "url al bucket",
         "dataType": "string",
         "default": "",
@@ -1316,14 +1316,14 @@
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1720700837276,
+          "updateAt": 1720702071159,
           "createAt": 1720700825131
         }
       },
       "pcoRlEiDv88_687Ajw2rs": {
         "id": "pcoRlEiDv88_687Ajw2rs",
         "tableId": "QeggFA1VS7CIncEo-bRJF",
-        "name": "picture",
+        "name": "image",
         "comment": "url al bucket",
         "dataType": "string",
         "default": "",
@@ -1336,7 +1336,7 @@
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1720700857708,
+          "updateAt": 1720702050822,
           "createAt": 1720700844697
         }
       }
@@ -1445,7 +1445,7 @@
           "columnIds": [
             "kg0mzPNhC0cgB4Kw5xfsP"
           ],
-          "x": 1447.0001,
+          "x": 1450.5001,
           "y": 489,
           "direction": 8
         },
@@ -1932,7 +1932,7 @@
       1720655475674,
       -1,
       {
-        "name": 1720655486747,
+        "name": 1720701207201,
         "dataType": 1720655491268
       }
     ],
@@ -1951,7 +1951,7 @@
       1720656751762,
       -1,
       {
-        "name": 1720656755898,
+        "name": 1720702076822,
         "dataType": 1720656763297,
         "comment": 1720658206280
       }
@@ -2007,7 +2007,7 @@
       1720657194089,
       -1,
       {
-        "name": 1720657197824,
+        "name": 1720702062997,
         "dataType": 1720657223425,
         "comment": 1720657350012
       }
@@ -2069,7 +2069,7 @@
       1720700825129,
       -1,
       {
-        "name": 1720700828314,
+        "name": 1720702071158,
         "dataType": 1720700832426,
         "comment": 1720700837275
       }
@@ -2079,7 +2079,7 @@
       1720700844696,
       -1,
       {
-        "name": 1720700850030,
+        "name": 1720702050821,
         "comment": 1720700853193,
         "dataType": 1720700857708
       }

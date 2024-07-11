@@ -3,9 +3,8 @@ import { Schema, model } from 'mongoose'
 const SellerSchema = new Schema(
   {
     name: { type: String, required: true },
-    description: { type: String },
     image: { type: String },
-    email: { type: String},
+    email: { type: String, required: true },
     //add password hashed
     address: { 
       country: { type: String },

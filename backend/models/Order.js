@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose'
 
 const OrderSchema = new Schema(
   {
-    status: { type: String, required: true },
+    status: { type: String, required: true, default: "Pending" },
     products: 
         [ {
             productId: { type: String },
@@ -25,9 +25,9 @@ const OrderSchema = new Schema(
         city: { type: String },
         province: { type: String },
         zip: { type: String }
-     
     },
-    userId: { type: String, required: true }
+    userId: { type: String, required: true },
+    total: { type: Number, required: true }
   },
   { timestamps: true }
 )
