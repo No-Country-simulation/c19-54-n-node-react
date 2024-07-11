@@ -3,11 +3,17 @@ import { Schema, model } from 'mongoose'
 const SellerSchema = new Schema(
   {
     name: { type: String, required: true },
-    description: { type: String },
     image: { type: String },
-    email: { type: String},
+    email: { type: String, required: true },
     //add password hashed
-    address: { type: [String] }
+    address: { 
+      country: { type: String },
+      street1: { type: String },
+      street2: { type: String },
+      city: { type: String },
+      province: { type: String },
+      zip: { type: String }
+    }
   },
   { timestamps: true }
 )
