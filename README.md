@@ -24,6 +24,7 @@ El proyecto se centra en el desarrollo de una plataforma de e-commerce diseñada
 - Aineska Zacarias - QA
 
 #### Enlaces del Proyecto:
+- [Deploy](https://ecommerce-artisan.vercel.app/)
 - [Repo](https://github.com/No-Country-simulation/c19-54-n-node-react/)
 - [Backlog](https://github.com/orgs/No-Country-simulation/projects/17)
 
