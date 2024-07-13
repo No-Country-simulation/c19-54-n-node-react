@@ -21,7 +21,8 @@ const UserSchema = new Schema(
       city: { type: String },
       province: { type: String },
       zip: { type: String }
-    }
+    },
+    roles: { type: [String] }
   },
   { timestamps: true }
 )
