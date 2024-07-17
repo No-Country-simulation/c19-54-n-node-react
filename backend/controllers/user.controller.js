@@ -1,76 +1,101 @@
-import { User } from '../models/User.js'
-import { uploadFile } from '../utils/uploadFile.js'
-import { upload } from '../config/multer.js'
+import { User } from '../models/User.js';
+import { uploadFile } from '../utils/uploadFile.js';
+import { upload } from '../config/multer.js';
 
 const getAllUsers = async (req, res) => {
-  const users = await User.find({})
   try {
+    const users = await User.find({});
     res.status(200).json({
       status: 'Success',
       data: {
-        users
-      }
-    })
-    console.log("status: 'Success'")
+        users,
+      },
+    });
+    console.log("status: 'Success'");
   } catch (err) {
     res.status(500).json({
       status: 'Failed',
-      message: err
-    })
+      message: err.message,
+    });
   }
-}
+};
 
 const getUserById = async (req, res) => {
-  const userId = req.params._id
-  const user = await User.findById(userId)
   try {
+    const userId = req.params._id;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({
+        status: 'Failed',
+        message: 'User not found',
+      });
+    }
     res.status(200).json({
       status: 'Success',
       data: {
-        user
-      }
-    })
-    console.log("status: 'Success'")
+        user,
+      },
+    });
+    console.log("status: 'Success'");
   } catch (err) {
     res.status(500).json({
       status: 'Failed',
-      message: err
-    })
+      message: err.message,
+    });
   }
-}
+};
 
-const createUser = async (req, res) => {
-  upload.fields([{ name: 'image', maxCount: 1 }]),
-    async (req, res) => {
-      const body = req.body
-      const image = req.files.image
+const createUser = (req, res) => {
+  upload.fields([{ name: 'image', maxCount: 1 }])(req, res, async (err) => {
+    if (err) {
+      return res.status(500).json({ status: 'Failed', message: err.message });
+    }
+
+    try {
+      const body = req.body;
+      const image = req.files ? req.files.image : null;
 
       if (image && image.length > 0) {
-        const { downloadURL } = await uploadFile(image[0])
+        const { downloadURL } = await uploadFile(image[0]);
 
         const newUser = new User({
           name: body.name,
           email: body.email,
           password: body.password,
           image: downloadURL,
-          billingAddress: body.billingAddress,
-          shippingAddress: body.shippingAddress,
-          roles: body.roles
-        })
-        newUser.save()
-        return res.status(200).json({ newUser })
+          billingAddress: JSON.parse(body.billingAddress),
+          shippingAddress: JSON.parse(body.shippingAddress),
+          roles: body.roles.split(','),
+        });
+        await newUser.save();
+        return res.status(200).json({
+          status: 'Success',
+          data: { newUser },
+        });
+      } else {
+        return res.status(400).json({ status: 'Failed', message: 'Debes enviar una imagen' });
       }
-      return res.status(400).json({ message: 'Debes enviar una imagen' })
+    } catch (err) {
+      res.status(500).json({
+        status: 'Failed',
+        message: err.message,
+      });
     }
-}
+  });
+};
 
-const updateUser = async (req, res) => {}
-const deleteUser = async (req, res) => {}
+const updateUser = async (req, res) => {
+  // Código para actualizar usuario
+};
+
+const deleteUser = async (req, res) => {
+  // Código para eliminar usuario
+};
 
 export const controllers = {
   getAllUsers,
   getUserById,
   createUser,
   updateUser,
-  deleteUser
-}
+  deleteUser,
+};
