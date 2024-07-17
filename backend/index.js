@@ -8,11 +8,12 @@ import connectDB from './utils/db.js'
 
 const PORT = process.env.PORT || 8080
 const app = express()
+
 connectDB()
 app
-  .use(bodyParser.json())
-  .use(express.urlencoded({ extended: true }))
   .use(cors())
+  .use(bodyParser.json())
+  .use(bodyParser.urlencoded({ extended: true }))
   .disable('x-powered-by')
   .use('/users', UsersRouter)
   .use('/products', productsRouter)
