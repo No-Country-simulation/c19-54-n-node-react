@@ -2,16 +2,21 @@ import 'dotenv/config'
 import cors from 'cors'
 import express from 'express'
 import bodyParser from 'body-parser'
-//import router from './routes/products.routes.js'
+import UsersRouter from './routes/users.routes.js'
+import productsRouter from './routes/products.routes.js'
+import connectDB from './utils/db.js'
 
 const PORT = process.env.PORT || 8080
 const app = express()
+
+connectDB()
 app
-  .use(bodyParser.json())
-  .use(express.urlencoded({ extended: true }))
   .use(cors())
+  .use(bodyParser.json())
+  .use(bodyParser.urlencoded({ extended: true }))
   .disable('x-powered-by')
-  //.use('/noticias', router)
-   .listen(PORT, () => {
-    console.log(`Server is running on PORT ${PORT}`)
+  .use('/users', UsersRouter)
+  .use('/products', productsRouter)
+  .listen(PORT, () => {
+    console.log(`Server is running on PORT http://localhost:${PORT}`)
   })

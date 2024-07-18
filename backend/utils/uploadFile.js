@@ -11,7 +11,7 @@ export async function uploadFile (file) {
     })
     .webp({ lossless: true })
     .toBuffer()
-  const fileRef = ref(storage, `products/${v4()}.webp`)
+  const fileRef = ref(storage, `images/${v4()}.webp`)
   const fileMetadata = {
     contentType: file.mimetype
   }

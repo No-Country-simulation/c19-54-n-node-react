@@ -4,13 +4,14 @@ const ProductSchema = new Schema(
   {
     name: { type: String, required: true },
     description: { type: String },
+    image: { type: String },
+    original_price: { type: Number},
+    sale_price: {type: Number},
     images: { type: [String]},
-    originalPrice: { type: Float64Array, required: true, default: 0 },
-    salePrice: {type: Float64Array},
     categories: { type: [String] },
     status: { type: String, default: "Unpublished" },
     stock: { type: Number, required: true, default: 0 },
-    sellerId: { type: String, required: true }
+    storeId: { type: String, required: true }
   },
   { timestamps: true }
 )

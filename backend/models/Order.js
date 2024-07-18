@@ -27,6 +27,7 @@ const OrderSchema = new Schema(
         zip: { type: String }
     },
     userId: { type: String, required: true },
+    storeId: { type: String, required: true },
     total: { type: Number, required: true }
   },
   { timestamps: true }
