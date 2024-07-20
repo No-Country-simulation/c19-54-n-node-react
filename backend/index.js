@@ -8,6 +8,8 @@ import storesRouter from './routes/stores.routes.js'
 import ordersRouter from './routes/orders.routes.js'
 import connectDB from './utils/db.js'
 
+import { swaggerDocs } from './swagger.js';
+
 const PORT = process.env.PORT || 8080
 const app = express()
 
@@ -23,4 +25,5 @@ app
   .use('/orders', ordersRouter)
   .listen(PORT, () => {
     console.log(`Server is running on PORT http://localhost:${PORT}`)
+    swaggerDocs(app, PORT)
   })
