@@ -17,39 +17,42 @@
  *                   type: string
  *                   example: Success
  *                 data:
- *                   type: array
- *                   items: 
- *                     type: object
- *                     properties:
- *                       _id:
- *                         type: string
- *                         example: 669947465b3a1b695f4a544d
- *                       sellerId:
- *                         type: string
- *                         example: 669874be9491ccf0ebeec67a
- *                       name:
- *                         type: string
- *                         example: Cueros de calidad
- *                       images:
- *                         type: array
- *                         items:
- *                            type: string
- *                            example: https://firebasestorage.googleapis.com/v0/b/arte-sano.appspot.com/o/images%2F60f01a50-9ee6-457f-acd1-3dad1cf10f1c.webp?alt=media&token=aad2a33b-825b-49b4-8756-0be227e2ee11
- *                       status:
- *                         type: string
- *                         example: Unpublished
- *                       intro:
- *                         type: string
- *                         example: Vendemos productos de cuero de máxima calidad
- *                       createdAt:
- *                         type: string
- *                         example: 2024-07-18T16:48:06.581Z
- *                       updatedAt:
- *                         type: string
- *                         example: 2024-07-18T16:48:06.581Z
- *                       __v:
- *                         type: integer
- *                         example: 0
+ *                   type: object
+ *                   properties:
+ *                      stores:
+ *                        type: array
+ *                        items: 
+ *                          type: object
+ *                          properties:
+ *                            _id:
+ *                              type: string
+ *                              example: 669947465b3a1b695f4a544d
+ *                            sellerId:
+ *                              type: string
+ *                              example: 669874be9491ccf0ebeec67a
+ *                            name:
+ *                              type: string
+ *                              example: Cueros de calidad
+ *                            images:
+ *                              type: array
+ *                              items:
+ *                                type: string
+ *                                example: https://firebasestorage.googleapis.com/v0/b/arte-sano.appspot.com/o/images%2F60f01a50-9ee6-457f-acd1-3dad1cf10f1c.webp?alt=media&token=aad2a33b-825b-49b4-8756-0be227e2ee11
+ *                            status:
+ *                              type: string
+ *                              example: Unpublished
+ *                            intro:
+ *                              type: string
+ *                              example: Vendemos productos de cuero de máxima calidad
+ *                            createdAt:
+ *                              type: string
+ *                              example: 2024-07-18T16:48:06.581Z
+ *                            updatedAt:
+ *                              type: string
+ *                              example: 2024-07-18T16:48:06.581Z
+ *                            __v:
+ *                              type: integer
+ *                              example: 0
  *       500:
  *          description: Error
  *          content:    
@@ -97,37 +100,40 @@
  *                  status: 
  *                     type: string
  *                  data:
- *                     type: object
- *                     properties:
- *                       _id:
- *                         type: string
- *                         example: 669947465b3a1b695f4a544d
- *                       sellerId:
- *                         type: string
- *                         example: 669874be9491ccf0ebeec67a
- *                       name:
- *                         type: string
- *                         example: Cueros de calidad
- *                       images:
- *                         type: array
- *                         items:
- *                            type: string
- *                            example: https://firebasestorage.googleapis.com/v0/b/arte-sano.appspot.com/o/images%2F60f01a50-9ee6-457f-acd1-3dad1cf10f1c.webp?alt=media&token=aad2a33b-825b-49b4-8756-0be227e2ee11
- *                       status:
- *                         type: string
- *                         example: Unpublished
- *                       intro:
- *                         type: string
- *                         example: Vendemos productos de cuero de máxima calidad
- *                       createdAt:
- *                         type: string
- *                         example: 2024-07-18T16:48:06.581Z
- *                       updatedAt:
- *                         type: string
- *                         example: 2024-07-18T16:48:06.581Z
- *                       __v:
- *                         type: integer
- *                         example: 0   
+ *                   type: object
+ *                   properties:
+ *                      store: 
+ *                          type: object
+ *                          properties:
+ *                            _id:
+ *                              type: string
+ *                              example: 669947465b3a1b695f4a544d
+ *                            sellerId:
+ *                              type: string
+ *                              example: 669874be9491ccf0ebeec67a
+ *                            name:
+ *                              type: string
+ *                              example: Cueros de calidad
+ *                            images:
+ *                              type: array
+ *                              items:
+ *                                type: string
+ *                                example: https://firebasestorage.googleapis.com/v0/b/arte-sano.appspot.com/o/images%2F60f01a50-9ee6-457f-acd1-3dad1cf10f1c.webp?alt=media&token=aad2a33b-825b-49b4-8756-0be227e2ee11
+ *                            status:
+ *                              type: string
+ *                              example: Unpublished
+ *                            intro:
+ *                              type: string
+ *                              example: Vendemos productos de cuero de máxima calidad
+ *                            createdAt:
+ *                              type: string
+ *                              example: 2024-07-18T16:48:06.581Z
+ *                            updatedAt:
+ *                              type: string
+ *                              example: 2024-07-18T16:48:06.581Z
+ *                            __v:
+ *                              type: integer
+ *                              example: 0   
  *       400:
  *          description: Error
  *          content:    
@@ -178,37 +184,40 @@
  *                  status: 
  *                     type: string
  *                  data:
- *                     type: object
- *                     properties:
- *                       _id:
- *                         type: string
- *                         example: 669947465b3a1b695f4a544d
- *                       sellerId:
- *                         type: string
- *                         example: 669874be9491ccf0ebeec67a
- *                       name:
- *                         type: string
- *                         example: Cueros de calidad
- *                       images:
- *                         type: array
- *                         items:
- *                            type: string
- *                            example: https://firebasestorage.googleapis.com/v0/b/arte-sano.appspot.com/o/images%2F60f01a50-9ee6-457f-acd1-3dad1cf10f1c.webp?alt=media&token=aad2a33b-825b-49b4-8756-0be227e2ee11
- *                       status:
- *                         type: string
- *                         example: Unpublished
- *                       intro:
- *                         type: string
- *                         example: Vendemos productos de cuero de máxima calidad
- *                       createdAt:
- *                         type: string
- *                         example: 2024-07-18T16:48:06.581Z
- *                       updatedAt:
- *                         type: string
- *                         example: 2024-07-18T16:48:06.581Z
- *                       __v:
- *                         type: integer
- *                         example: 0  
+ *                   type: object
+ *                   properties:
+ *                      store: 
+ *                          type: object
+ *                          properties:
+ *                            _id:
+ *                              type: string
+ *                              example: 669947465b3a1b695f4a544d
+ *                            sellerId:
+ *                              type: string
+ *                              example: 669874be9491ccf0ebeec67a
+ *                            name:
+ *                              type: string
+ *                              example: Cueros de calidad
+ *                            images:
+ *                              type: array
+ *                              items:
+ *                                type: string
+ *                                example: https://firebasestorage.googleapis.com/v0/b/arte-sano.appspot.com/o/images%2F60f01a50-9ee6-457f-acd1-3dad1cf10f1c.webp?alt=media&token=aad2a33b-825b-49b4-8756-0be227e2ee11
+ *                            status:
+ *                              type: string
+ *                              example: Unpublished
+ *                            intro:
+ *                              type: string
+ *                              example: Vendemos productos de cuero de máxima calidad
+ *                            createdAt:
+ *                              type: string
+ *                              example: 2024-07-18T16:48:06.581Z
+ *                            updatedAt:
+ *                              type: string
+ *                              example: 2024-07-18T16:48:06.581Z
+ *                            __v:
+ *                              type: integer
+ *                              example: 0  
  *       '400':
  *         description: Error - Invalid store ID
  *         content:
