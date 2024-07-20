@@ -21,7 +21,7 @@
  *                   items: 
  *                     type: object
  *                     properties:
- *                       id:
+ *                       _id:
  *                         type: string
  *                         example: 669947465b3a1b695f4a544d
  *                       sellerId:
@@ -47,6 +47,9 @@
  *                       updatedAt:
  *                         type: string
  *                         example: 2024-07-18T16:48:06.581Z
+ *                       __v:
+ *                         type: integer
+ *                         example: 0
  *       500:
  *          description: Error
  *          content:    
@@ -94,11 +97,9 @@
  *                  status: 
  *                     type: string
  *                  data:
- *                   type: array
- *                   items: 
  *                     type: object
  *                     properties:
- *                       id:
+ *                       _id:
  *                         type: string
  *                         example: 669947465b3a1b695f4a544d
  *                       sellerId:
@@ -123,7 +124,10 @@
  *                         example: 2024-07-18T16:48:06.581Z
  *                       updatedAt:
  *                         type: string
- *                         example: 2024-07-18T16:48:06.581Z   
+ *                         example: 2024-07-18T16:48:06.581Z
+ *                       __v:
+ *                         type: integer
+ *                         example: 0   
  *       400:
  *          description: Error
  *          content:    
@@ -174,11 +178,9 @@
  *                  status: 
  *                     type: string
  *                  data:
- *                   type: array
- *                   items: 
  *                     type: object
  *                     properties:
- *                       id:
+ *                       _id:
  *                         type: string
  *                         example: 669947465b3a1b695f4a544d
  *                       sellerId:
@@ -203,7 +205,10 @@
  *                         example: 2024-07-18T16:48:06.581Z
  *                       updatedAt:
  *                         type: string
- *                         example: 2024-07-18T16:48:06.581Z 
+ *                         example: 2024-07-18T16:48:06.581Z
+ *                       __v:
+ *                         type: integer
+ *                         example: 0  
  *       '400':
  *         description: Error - Invalid store ID
  *         content:

@@ -57,7 +57,7 @@
  *                           zip:
  *                             type: string
  *                             example: 35d2
- *                       id:
+ *                       _id:
  *                         type: string
  *                         example: 669874be9491ccf0ebeec67a
  *                       name:
@@ -72,6 +72,19 @@
  *                       password:
  *                         type: string
  *                         example: pastafrola
+ *                       roles:
+ *                           type: array
+ *                           items:
+ *                             type: string
+ *                       createdAt:
+ *                         type: string
+ *                         example: 2024-07-18T16:48:06.581Z
+ *                       updatedAt:
+ *                         type: string
+ *                         example: 2024-07-18T16:48:06.581Z
+ *                       __v:
+ *                         type: integer
+ *                         example: 0 
  *       500:
  *          description: Error
  *          content:    
@@ -131,10 +144,8 @@
  *                  status: 
  *                     type: string
  *                  data:
- *                     type: array
- *                     items:
- *                       type: object
- *                       properties:
+ *                     type: object
+ *                     properties:
  *                         billingAddress:
  *                           type: object
  *                           properties:
@@ -161,7 +172,7 @@
  *                               type: string
  *                             zip:
  *                               type: string
- *                         id:
+ *                         _id:
  *                           type: string
  *                         name:
  *                           type: string
@@ -178,7 +189,10 @@
  *                         createdAt:
  *                           type: string
  *                         updateAt:
- *                           type: string   
+ *                           type: string
+ *                         __v:
+ *                           type: integer
+ *                           example: 0  
  *       400:
  *          description: Error
  *          content:    
@@ -229,10 +243,8 @@
  *                 status: 
  *                   type: string
  *                 data:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
+ *                   type: object
+ *                   properties:
  *                       billingAddress:
  *                         type: object
  *                         properties:
@@ -259,7 +271,7 @@
  *                             type: string
  *                           zip:
  *                             type: string
- *                       id:
+ *                       _id:
  *                         type: string
  *                       name:
  *                         type: string
@@ -277,6 +289,9 @@
  *                         type: string
  *                       updateAt:
  *                         type: string
+ *                       __v:
+ *                         type: integer
+ *                         example: 0
  *       '400':
  *         description: Error - Invalid user ID
  *         content:
