@@ -2,6 +2,8 @@
  * @openapi
  * /users:
  *   get:
+ *     tags:
+ *      - Users
  *     summary: Get all users 
  *     responses:
  *       200:
@@ -84,6 +86,8 @@
  *                        type: string
  * 
  *   post:
+ *     tags:
+ *      - Users 
  *     summary: Register a new user
  *     description: Allows registering a new user on the platform with detailed profile information.
  *     requestBody:
@@ -117,7 +121,7 @@
  *                 type: string
  *                 format: binary
  *     responses:
- *       '201':
+ *       '200':
  *         description: OK! User successfully registered
  *         content:
  *            application/json:
@@ -203,6 +207,8 @@
  * 
  * /users/{id}:
  *   get:
+ *     tags:
+ *      - Users
  *     summary: Get a specific user
  *     description: Returns the details of a specific user by their ID.
  *     parameters:

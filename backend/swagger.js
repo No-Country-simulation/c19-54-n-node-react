@@ -12,7 +12,7 @@ const options = {
         'This API provides backend functionality for an e-commerce platform specializing in handicrafts. It allows managing and accessing information about products, users, and sellers. With this API, you can perform operations such as querying the product catalog, registering and authenticating users, and managing seller profiles.',
       version: '1.0.11'
     }},
-    apis: ['./routes/orders.routes.js', './routes/products.routes.js', './routes/stores.routes.js', './routes/users.routes.js', './swagger/users.docs.js', './swagger/stores.docs.js'],
+    apis: ['./swagger/users.docs.js', './swagger/stores.docs.js'],
 }
 
 const swaggerSpec = swaggerJSDoc(options)
