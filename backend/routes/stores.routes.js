@@ -10,5 +10,6 @@ storesRouter
     .post('/', controllers.createStore)
     .put('/:id', controllers.updateStore)
     .delete('/:id', controllers.deleteStore)
+    .get('/user/:id', controllers.getUserStore)
 
 export default storesRouter

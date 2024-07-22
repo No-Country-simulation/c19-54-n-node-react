@@ -116,10 +116,42 @@ const deleteStore = async (req, res) => {
   }
 }
 
+const getUserStore = async (req, res) => {
+  try {
+    const userId = req.params.id
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(400).json({
+        status: 'Failed',
+        message: 'Invalid user ID'
+      })
+    }
+
+    const store = await Store.find(
+      {
+        sellerId: userId
+      }
+    )
+
+    res.status(200).json({
+      status: 'Success',
+      data: {
+        store
+      }
+    })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({
+      status: 'Failed',
+      message: err.message
+    })
+  }
+}
+
 export const controllers = {
   getAllStores,
   getStoreById,
   createStore,
   updateStore,
-  deleteStore
+  deleteStore,
+  getUserStore
 }
