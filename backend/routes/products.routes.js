@@ -11,5 +11,6 @@ productsRouter
     .put('/:id', controllers.updateProduct)
     .delete('/:id', controllers.deleteProduct)
     .get('/store/:id', controllers.getStoreProducts)
+    .get('/category/:cat', controllers.getCategoryProducts)
 
 export default productsRouter

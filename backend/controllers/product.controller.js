@@ -103,8 +103,19 @@ const createProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
 
 }
-const deleteProduct = async (req, res) => {
 
+const deleteProduct = async (req, res) => {
+  try {
+
+    await Product.findByIdAndDelete(req.params.id)
+    res.status(200).json(`Product with id = ${req.params.id} deleted`)
+
+  } catch (err) {
+    res.status(500).json({
+      status: 'Failed',
+      message: err.message
+    })
+  }
 }
 
 const getStoreProducts = async (req, res) => {
@@ -120,6 +131,40 @@ const getStoreProducts = async (req, res) => {
     const products = await Product.find(
       {
         storeId: storeId
+      }
+    ).sort({createdAt: -1})
+
+    if (!products) {
+      return res.status(404).json({
+        status: 'Failed',
+        message: 'Product not found'
+      })
+    }
+
+    res.status(200).json({
+      status: 'Success',
+      data: {
+        products
+      }
+    })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({
+      status: 'Failed',
+      message: err.message
+    })
+  }
+}
+
+const getCategoryProducts = async (req, res) => {
+  try {
+    const category = req.params.cat
+
+    const products = await Product.find(
+      {
+        categories: {
+          $in: [category]
+        }
       }
     ).sort({createdAt: -1})
     
@@ -151,5 +196,6 @@ export const controllers = {
   createProduct,
   updateProduct,
   deleteProduct,
-  getStoreProducts
+  getStoreProducts,
+  getCategoryProducts
 }

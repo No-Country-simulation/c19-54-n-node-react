@@ -1,5 +1,4 @@
 import { Order } from '../models/Order.js'
-import { uploadFile } from '../utils/uploadFile.js'
 import { upload } from '../config/multer.js'
 import mongoose from 'mongoose'
 
@@ -58,7 +57,7 @@ const createOrder = async (req, res) => {
     upload.fields([{ name: 'images', maxCount: 5 }])(req, res, async err => {
       if (err) {
         return res.status(500).json({ status: 'Failed', message: err.message })
-      }
+      } 
       try {
         const body = req.body
         const products = (JSON.parse(body.products)).products
@@ -104,7 +103,16 @@ const updateOrder = async (req, res) => {
 
 }
 const deleteOrder = async (req, res) => {
+  try {
+    await Order.findByIdAndDelete(req.params.id)
+    res.status(200).json(`Order with id = ${req.params.id} deleted`)
 
+  } catch (err) {
+    res.status(500).json({
+      status: 'Failed',
+      message: err.message
+    })
+  }
 }
 
 export const controllers = {

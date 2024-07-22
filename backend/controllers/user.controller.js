@@ -100,7 +100,16 @@ const updateUser = async (req, res) => {
 }
 
 const deleteUser = async (req, res) => {
-  // Código para eliminar usuario
+  try {
+    await User.findByIdAndDelete(req.params.id)
+    res.status(200).json(`User with id = ${req.params.id} deleted`)
+
+  } catch (err) {
+    res.status(500).json({
+      status: 'Failed',
+      message: err.message
+    })
+  }
 }
 
 export const controllers = {

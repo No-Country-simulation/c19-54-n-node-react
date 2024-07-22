@@ -101,8 +101,19 @@ const createStore = async (req, res) => {
 const updateStore = async (req, res) => {
 
 }
-const deleteStore = async (req, res) => {
 
+const deleteStore = async (req, res) => {
+  try {
+
+    await Store.findByIdAndDelete(req.params.id)
+    res.status(200).json(`Store with id = ${req.params.id} deleted`)
+
+  } catch (err) {
+    res.status(500).json({
+      status: 'Failed',
+      message: err.message
+    })
+  }
 }
 
 export const controllers = {
