@@ -3,6 +3,11 @@ import { uploadFile } from '../utils/uploadFile.js'
 import { upload } from '../config/multer.js'
 import mongoose from 'mongoose'
 
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+
+const CryptoJS = require("crypto-js");
+
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.find({})
@@ -70,7 +75,10 @@ const createUser = (req, res) => {
         const newUser = new User({
           name: body.name,
           email: body.email,
-          password: body.password,
+          password: CryptoJS.AES.encrypt(
+            body.password,
+            process.env.PASS_SEC
+          ).toString(),
           image: downloadURL,
           billingAddress: JSON.parse(body.billingAddress),
           shippingAddress: JSON.parse(body.shippingAddress),
