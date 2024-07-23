@@ -6,6 +6,7 @@ import UsersRouter from './routes/users.routes.js'
 import productsRouter from './routes/products.routes.js'
 import storesRouter from './routes/stores.routes.js'
 import ordersRouter from './routes/orders.routes.js'
+import authRouter from './routes/auth.routes.js'
 import connectDB from './utils/db.js'
 
 import { swaggerDocs } from './swagger.js';
@@ -23,6 +24,7 @@ app
   .use('/products', productsRouter)
   .use('/stores', storesRouter)
   .use('/orders', ordersRouter)
+  .use('/auth', authRouter)
   .listen(PORT, () => {
     console.log(`Server is running on PORT http://localhost:${PORT}`)
     swaggerDocs(app, PORT)
