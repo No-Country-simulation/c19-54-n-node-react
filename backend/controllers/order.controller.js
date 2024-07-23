@@ -153,11 +153,50 @@ const getStoreOrders = async (req, res) => {
   }
 }
 
+const getUserOrders = async (req, res) => {
+  try {
+    const userId = req.params.id
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(400).json({
+        status: 'Failed',
+        message: 'Invalid user ID'
+      })
+    }
+
+    const orders = await Order.find(
+      {
+        userId: userId
+      }
+    ).sort({createdAt: -1})
+
+    if (!orders) {
+      return res.status(404).json({
+        status: 'Failed',
+        message: 'Orders not found'
+      })
+    }
+
+    res.status(200).json({
+      status: 'Success',
+      data: {
+        orders
+      }
+    })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({
+      status: 'Failed',
+      message: err.message
+    })
+  }
+}
+
 export const controllers = {
   getAllOrders,
   getOrderById,
   createOrder,
   updateOrder,
   deleteOrder,
-  getStoreOrders
+  getStoreOrders,
+  getUserOrders
 }
