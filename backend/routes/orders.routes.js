@@ -10,5 +10,6 @@ ordersRouter
     .post('/', controllers.createOrder)
     .put('/:id', controllers.updateOrder)
     .delete('/:id', controllers.deleteOrder)
+    .get('/store/:id', controllers.getStoreOrders)
 
 export default ordersRouter
