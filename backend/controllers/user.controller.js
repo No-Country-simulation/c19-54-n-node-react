@@ -112,10 +112,45 @@ const deleteUser = async (req, res) => {
   }
 }
 
+const getUsersByRole = async (req, res) => {
+  try {
+    const role = req.params.role
+
+    const users = await User.find(
+      {
+        roles: {
+          $in: [role]
+        }
+      }
+    ).sort({createdAt: -1})
+    
+    if (!users) {
+      return res.status(404).json({
+        status: 'Failed',
+        message: 'Users not found'
+      })
+    }
+
+    res.status(200).json({
+      status: 'Success',
+      data: {
+        users
+      }
+    })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({
+      status: 'Failed',
+      message: err.message
+    })
+  }
+}
+
 export const controllers = {
   getAllUsers,
   getUserById,
   createUser,
   updateUser,
-  deleteUser
+  deleteUser, 
+  getUsersByRole
 }

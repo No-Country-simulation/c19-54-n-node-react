@@ -10,5 +10,6 @@ UsersRouter
     .post('/', controllers.createUser)
     .put('/:id', controllers.updateUser)
     .delete('/:id', controllers.deleteUser)
+    .get('/role/:role', controllers.getUsersByRole)
 
 export default UsersRouter
