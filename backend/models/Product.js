@@ -4,8 +4,8 @@ const ProductSchema = new Schema(
   {
     name: { type: String, required: true },
     description: { type: String },
-    original_price: { type: Number},
-    sale_price: {type: Number},
+    originalPrice: { type: Number},
+    salePrice: {type: Number},
     images: { type: [String]},
     categories: { type: [String] },
     status: { type: String, default: "Unpublished" },
