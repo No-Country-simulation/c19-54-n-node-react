@@ -20,7 +20,8 @@ module.exports = {
       "cream": "#FFEEDB",
       "dark-aqua": "#61C9A8",
       "dark-pink": "#BA3B46",
-      "gradient": "#000000b3"
+      "gradient": "#000000b3",
+      "b-green": "#61C9A8"
     },
   },
   plugins: [],
