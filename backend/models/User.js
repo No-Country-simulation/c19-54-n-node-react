@@ -6,7 +6,7 @@ const UserSchema = new Schema(
     email: { type: String, required: true },
     image: { type: String },
     password: { type: String, required: true },
-    billingAddress: { 
+    billingAddress: {
       country: { type: String },
       street1: { type: String },
       street2: { type: String },
@@ -14,7 +14,7 @@ const UserSchema = new Schema(
       province: { type: String },
       zip: { type: String }
     },
-    shippingAddress: { 
+    shippingAddress: {
       country: { type: String },
       street1: { type: String },
       street2: { type: String },
@@ -25,7 +25,6 @@ const UserSchema = new Schema(
     roles: { type: [String] }
   },
   { timestamps: true }
-);
-
+)
 
 export const User = model('User', UserSchema)

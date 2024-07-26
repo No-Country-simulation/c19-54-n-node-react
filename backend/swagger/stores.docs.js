@@ -4,7 +4,7 @@
  *   get:
  *     tags:
  *      - Stores
- *     summary: Get all stores 
+ *     summary: Get all stores
  *     responses:
  *       200:
  *         description: OK
@@ -21,7 +21,7 @@
  *                   properties:
  *                      stores:
  *                        type: array
- *                        items: 
+ *                        items:
  *                          type: object
  *                          properties:
  *                            _id:
@@ -55,7 +55,7 @@
  *                              example: 0
  *       500:
  *          description: Error
- *          content:    
+ *          content:
  *              application/json:
  *                  schema:
  *                    type: object
@@ -67,7 +67,7 @@
  *                        type: string
  *   post:
  *     tags:
- *      - Stores 
+ *      - Stores
  *     summary: Register a new store
  *     description: Create a new store.
  *     requestBody:
@@ -97,12 +97,12 @@
  *              schema:
  *                type: object
  *                properties:
- *                  status: 
+ *                  status:
  *                     type: string
  *                  data:
  *                   type: object
  *                   properties:
- *                      store: 
+ *                      store:
  *                          type: object
  *                          properties:
  *                            _id:
@@ -133,10 +133,10 @@
  *                              example: 2024-07-18T16:48:06.581Z
  *                            __v:
  *                              type: integer
- *                              example: 0   
+ *                              example: 0
  *       400:
  *          description: Error
- *          content:    
+ *          content:
  *              application/json:
  *                  schema:
  *                    type: object
@@ -159,7 +159,7 @@
  *                          example: Failed
  *                        message:
  *                          type: string
- * 
+ *
  * /stores/{id}:
  *   get:
  *     tags:
@@ -181,12 +181,12 @@
  *              schema:
  *                type: object
  *                properties:
- *                  status: 
+ *                  status:
  *                     type: string
  *                  data:
  *                   type: object
  *                   properties:
- *                      store: 
+ *                      store:
  *                          type: object
  *                          properties:
  *                            _id:
@@ -217,7 +217,7 @@
  *                              example: 2024-07-18T16:48:06.581Z
  *                            __v:
  *                              type: integer
- *                              example: 0  
+ *                              example: 0
  *       '400':
  *         description: Error - Invalid store ID
  *         content:
@@ -256,4 +256,4 @@
  *                   example: Failed
  *                 message:
  *                   type: string
- */ 
+ */

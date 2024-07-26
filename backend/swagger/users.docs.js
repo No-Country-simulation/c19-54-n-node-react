@@ -4,7 +4,7 @@
  *   get:
  *     tags:
  *      - Users
- *     summary: Get all users 
+ *     summary: Get all users
  *     responses:
  *       200:
  *         description: OK
@@ -21,7 +21,7 @@
  *                   properties:
  *                      users:
  *                        type: array
- *                        items: 
+ *                        items:
  *                          type: object
  *                          properties:
  *                             billingAddress:
@@ -87,10 +87,10 @@
  *                                example: 2024-07-18T16:48:06.581Z
  *                             __v:
  *                                type: integer
- *                                example: 0 
+ *                                example: 0
  *       500:
  *          description: Error
- *          content:    
+ *          content:
  *              application/json:
  *                  schema:
  *                    type: object
@@ -100,10 +100,10 @@
  *                        example: failed
  *                      message:
  *                        type: string
- * 
+ *
  *   post:
  *     tags:
- *      - Users 
+ *      - Users
  *     summary: Register a new user
  *     description: Allows registering a new user on the platform with detailed profile information.
  *     requestBody:
@@ -144,12 +144,12 @@
  *              schema:
  *                type: object
  *                properties:
- *                  status: 
+ *                  status:
  *                     type: string
  *                  data:
  *                   type: object
  *                   properties:
- *                      user: 
+ *                      user:
  *                          type: object
  *                          properties:
  *                             billingAddress:
@@ -215,10 +215,10 @@
  *                                example: 2024-07-18T16:48:06.581Z
  *                             __v:
  *                                type: integer
- *                                example: 0  
+ *                                example: 0
  *       400:
  *          description: Error
- *          content:    
+ *          content:
  *              application/json:
  *                  schema:
  *                    type: object
@@ -241,7 +241,7 @@
  *                          example: Failed
  *                        message:
  *                          type: string
- * 
+ *
  * /users/{id}:
  *   get:
  *     tags:
@@ -263,12 +263,12 @@
  *             schema:
  *               type: object
  *               properties:
- *                 status: 
+ *                 status:
  *                   type: string
  *                 data:
  *                   type: object
  *                   properties:
- *                      user: 
+ *                      user:
  *                          type: object
  *                          properties:
  *                             billingAddress:
@@ -360,5 +360,5 @@
  *                   example: Failed
  *                 message:
  *                   type: string
- *                   example: User not found 
+ *                   example: User not found
  */

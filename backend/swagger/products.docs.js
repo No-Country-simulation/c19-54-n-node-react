@@ -4,7 +4,7 @@
  *   get:
  *     tags:
  *      - Products
- *     summary: Get all products 
+ *     summary: Get all products
  *     responses:
  *       200:
  *         description: OK
@@ -21,7 +21,7 @@
  *                   properties:
  *                      products:
  *                        type: array
- *                        items: 
+ *                        items:
  *                          type: object
  *                          properties:
  *                            _id:
@@ -42,7 +42,7 @@
  *                              type: array
  *                              items:
  *                                type: string
- *                                example: Cuero   
+ *                                example: Cuero
  *                            status:
  *                              type: string
  *                              example: Unpublished
@@ -63,7 +63,7 @@
  *                              example: 0
  *       500:
  *          description: Error
- *          content:    
+ *          content:
  *              application/json:
  *                  schema:
  *                    type: object
@@ -75,7 +75,7 @@
  *                        type: string
  *   post:
  *     tags:
- *      - Products 
+ *      - Products
  *     summary: Register a new product
  *     description: Create a new product.
  *     requestBody:
@@ -102,7 +102,7 @@
  *                 items:
  *                    type: string
  *                    format: binary
- *               
+ *
  *     responses:
  *       '200':
  *         description: OK! Product successfully registered
@@ -111,7 +111,7 @@
  *              schema:
  *                type: object
  *                properties:
- *                  status: 
+ *                  status:
  *                     type: string
  *                  data:
  *                     type: object
@@ -137,7 +137,7 @@
  *                              type: array
  *                              items:
  *                                type: string
- *                                example: Cuero   
+ *                                example: Cuero
  *                            status:
  *                              type: string
  *                              example: Unpublished
@@ -155,10 +155,10 @@
  *                              example: 2024-07-18T16:48:06.581Z
  *                            __v:
  *                              type: integer
- *                              example: 0  
+ *                              example: 0
  *       400:
  *          description: Error
- *          content:    
+ *          content:
  *              application/json:
  *                  schema:
  *                    type: object
@@ -181,7 +181,7 @@
  *                          example: Failed
  *                        message:
  *                          type: string
- * 
+ *
  * /products/{id}:
  *    get:
  *      tags:
@@ -203,7 +203,7 @@
  *              schema:
  *                type: object
  *                properties:
- *                  status: 
+ *                  status:
  *                     type: string
  *                  data:
  *                     type: object
@@ -229,7 +229,7 @@
  *                                  type: array
  *                                  items:
  *                                    type: string
- *                                    example: Cuero   
+ *                                    example: Cuero
  *                                status:
  *                                  type: string
  *                                  example: Unpublished
@@ -248,7 +248,7 @@
  *                                __v:
  *                                  type: integer
  *                                  example: 0
- *           
+ *
  *       '400':
  *          description: Error - Invalid store ID
  *          content:
@@ -274,7 +274,7 @@
  *                   example: Failed
  *                 message:
  *                   type: string
- *                   example: Product not found    
+ *                   example: Product not found
  *       '500':
  *         description: Error
  *         content:
@@ -286,5 +286,5 @@
  *                   type: string
  *                   example: Failed
  *                 message:
- *                   type: string            
- */     
+ *                   type: string
+ */

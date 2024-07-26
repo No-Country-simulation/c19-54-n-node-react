@@ -55,48 +55,46 @@ const getStoreById = async (req, res) => {
 }
 
 const createStore = async (req, res) => {
-    upload.fields([{ name: 'images', maxCount: 5 }])(req, res, async err => {
-      if (err) {
-        return res.status(500).json({ status: 'Failed', message: err.message })
-      }
-      try {
-        const body = req.body
-        const images = req.files ? req.files.images : null
-  
-        if (images && images.length > 0) {
-  
-          let imageArray = []
-          for (let i = 0; i < images.length; i++) {
-          let { downloadURL } = await uploadFile(images[i])
-          imageArray.push(downloadURL)
-          }
-  
-          const newStore = new Store({
-            name: body.name,
-            intro: body.intro,
-            sellerId: body.sellerId,
-            status: "Unpublished",
-            images: imageArray
-          })
-          await newStore.save()
-          return res.status(200).json({
-            status: 'Success',
-            data: { newStore }
-          })
-        } else {
-          return res
-            .status(400)
-            .json({ status: 'Failed', message: 'Debes enviar una imagen' }) 
-        }
-      } catch (err) {
-        res.status(500).json({
-          status: 'Failed',
-          message: err.message
-        })
-      }
-    })
-}
+  upload.fields([{ name: 'images', maxCount: 5 }])(req, res, async err => {
+    if (err) {
+      return res.status(500).json({ status: 'Failed', message: err.message })
+    }
+    try {
+      const body = req.body
+      const images = req.files ? req.files.images : null
 
+      if (images && images.length > 0) {
+        const imageArray = []
+        for (let i = 0; i < images.length; i++) {
+          const { downloadURL } = await uploadFile(images[i])
+          imageArray.push(downloadURL)
+        }
+
+        const newStore = new Store({
+          name: body.name,
+          intro: body.intro,
+          sellerId: body.sellerId,
+          status: 'Unpublished',
+          images: imageArray
+        })
+        await newStore.save()
+        return res.status(200).json({
+          status: 'Success',
+          data: { newStore }
+        })
+      } else {
+        return res
+          .status(400)
+          .json({ status: 'Failed', message: 'Debes enviar una imagen' })
+      }
+    } catch (err) {
+      res.status(500).json({
+        status: 'Failed',
+        message: err.message
+      })
+    }
+  })
+}
 
 const updateStore = async (req, res) => {
 
@@ -104,10 +102,8 @@ const updateStore = async (req, res) => {
 
 const deleteStore = async (req, res) => {
   try {
-
     await Store.findByIdAndDelete(req.params.id)
     res.status(200).json(`Store with id = ${req.params.id} deleted`)
-
   } catch (err) {
     res.status(500).json({
       status: 'Failed',

@@ -13,5 +13,4 @@ router.use('/stores', StoresRouter)
 router.use('/orders', OrdersRouter)
 router.use('/auth', authRouter)
 
-
 export default router

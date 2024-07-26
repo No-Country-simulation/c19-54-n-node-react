@@ -3,10 +3,10 @@ import { uploadFile } from '../utils/uploadFile.js'
 import { upload } from '../config/multer.js'
 import mongoose from 'mongoose'
 
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
 
-const CryptoJS = require("crypto-js");
+const CryptoJS = require('crypto-js')
 
 const getAllUsers = async (req, res) => {
   try {
@@ -111,7 +111,6 @@ const deleteUser = async (req, res) => {
   try {
     await User.findByIdAndDelete(req.params.id)
     res.status(200).json(`User with id = ${req.params.id} deleted`)
-
   } catch (err) {
     res.status(500).json({
       status: 'Failed',
@@ -130,8 +129,8 @@ const getUsersByRole = async (req, res) => {
           $in: [role]
         }
       }
-    ).sort({createdAt: -1})
-    
+    ).sort({ createdAt: -1 })
+
     if (!users) {
       return res.status(404).json({
         status: 'Failed',
@@ -159,6 +158,6 @@ export const controllers = {
   getUserById,
   createUser,
   updateUser,
-  deleteUser, 
+  deleteUser,
   getUsersByRole
 }
