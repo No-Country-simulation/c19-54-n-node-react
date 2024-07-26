@@ -2,29 +2,24 @@ import 'dotenv/config'
 import cors from 'cors'
 import express from 'express'
 import bodyParser from 'body-parser'
-import UsersRouter from './routes/users.routes.js'
-import productsRouter from './routes/products.routes.js'
-import storesRouter from './routes/stores.routes.js'
-import ordersRouter from './routes/orders.routes.js'
-import authRouter from './routes/auth.routes.js'
+import routes from './routes/index.js'
 import connectDB from './utils/db.js'
 
-import { swaggerDocs } from './swagger.js';
+import { swaggerDocs } from './swagger.js'
 
 const PORT = process.env.PORT || 8080
 const app = express()
 
 connectDB()
+
 app
   .use(cors())
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
   .disable('x-powered-by')
-  .use('/users', UsersRouter)
-  .use('/products', productsRouter)
-  .use('/stores', storesRouter)
-  .use('/orders', ordersRouter)
-  .use('/auth', authRouter)
+
+  .use(routes)
+
   .listen(PORT, () => {
     console.log(`Server is running on PORT http://localhost:${PORT}`)
     swaggerDocs(app, PORT)
