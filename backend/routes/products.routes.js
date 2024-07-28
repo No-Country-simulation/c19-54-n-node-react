@@ -8,6 +8,7 @@ productsRouter
   .get('/:id', controllers.getProductById)
   .post('/', controllers.createProduct)
   .put('/:id', controllers.updateProduct)
+  .put('/:id/:status', controllers.updateProductStatus)
   .delete('/:id', controllers.deleteProduct)
   .get('/store/:id', controllers.getStoreProducts)
   .get('/category/:cat', controllers.getCategoryProducts)

@@ -102,6 +102,35 @@ const updateProduct = async (req, res) => {
 
 }
 
+const updateProductStatus = async (req, res) => {
+  try {
+    const productId = req.params.id
+    const status = req.params.status
+    const filter = {_id: productId}
+
+    const product = await Product.findById(productId)
+    if (!product) {
+      return res.status(404).json({
+        status: 'Failed',
+        message: 'Product not found'
+      })
+    } 
+    product.status = status
+    product.save()
+
+    return res.status(200).json({
+      status: 'Success',
+      data: { product }
+    })
+
+  } catch (err) {
+    res.status(500).json({
+      status: 'Failed',
+      message: err.message
+    })
+  }
+}
+
 const deleteProduct = async (req, res) => {
   try {
     await Product.findByIdAndDelete(req.params.id)
@@ -191,7 +220,8 @@ export const controllers = {
   getProductById,
   createProduct,
   updateProduct,
+  updateProductStatus,
   deleteProduct,
   getStoreProducts,
-  getCategoryProducts
+  getCategoryProducts,
 }
