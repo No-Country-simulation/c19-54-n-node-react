@@ -8,16 +8,14 @@ El proyecto se centra en el desarrollo de una plataforma de e-commerce diseñada
   - Enriquecer la experiencia de compra a través de un entorno que valore la singularidad y autenticidad de los productos artesanales.
 
 #### Colaboradores:
-- Edgar Torres - Team Leader
+
 - Maria Cristina Gutiérrez - Frontend
 - Tomas Sacchini - Frontend
 - Luiggy Carlin Felix - Frontend
 - Raul Quispe Díaz - Frontend / Backend
 - Carlos Malissia - Frontend /  UX/UI
 - Alejandra Len - UX/UI
-- Luis Velasquez - Backend
 - Matias Martin Murad Pretz - Backend
-- Miguel Angel Tito Rodriguez - Backend
 - Lucila Chaparro - Backend
 - Eric Yoel Ferreyra - Backend
 - Valentino Boggio - Backend
