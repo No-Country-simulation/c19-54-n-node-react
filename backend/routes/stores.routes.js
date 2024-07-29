@@ -8,6 +8,7 @@ storesRouter
   .get('/:id', controllers.getStoreById)
   .post('/', controllers.createStore)
   .put('/:id', controllers.updateStore)
+  //.put('/:id/:status', controllers.updateStoreStatus)
   .delete('/:id', controllers.deleteStore)
   .get('/user/:id', controllers.getUserStore)
 

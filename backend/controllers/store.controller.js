@@ -97,7 +97,67 @@ const createStore = async (req, res) => {
 }
 
 const updateStore = async (req, res) => {
+  upload.fields([])(req, res, async err => {
+    if (err) {
+      return res.status(500).json({ status: 'Failed', message: err.message })
+    }
+  try {
+   
+    const storeId = req.params.id
+    const body = req.body
+    const store = await Store.findById(storeId)
+    if (!store) {
+      return res.status(404).json({
+        status: 'Failed',
+        message: 'Store not found'
+      })
+    } 
 
+    store.name = (body.name != null && body.name != undefined) ? body.name : store.name
+    store.intro = (body.intro != null && body.intro != undefined) ? body.intro : store.intro
+
+    store.save()
+
+    return res.status(200).json({
+      status: 'Success',
+      data: { store }
+    })
+
+  } catch (err) {
+    res.status(500).json({
+      status: 'Failed',
+      message: err.message
+    })
+  }
+})
+}
+
+const updateStoreStatus = async (req, res) => {
+  try {
+    const storeId = req.params.id
+    const status = req.params.status
+
+    const store = await Store.findById(storeId)
+    if (!store) {
+      return res.status(404).json({
+        status: 'Failed',
+        message: 'Store not found'
+      })
+    } 
+    store.status = status
+    store.save()
+
+    return res.status(200).json({
+      status: 'Success',
+      data: { store }
+    })
+
+  } catch (err) {
+    res.status(500).json({
+      status: 'Failed',
+      message: err.message
+    })
+  }
 }
 
 const deleteStore = async (req, res) => {
@@ -148,6 +208,7 @@ export const controllers = {
   getStoreById,
   createStore,
   updateStore,
+  updateStoreStatus,
   deleteStore,
   getUserStore
 }

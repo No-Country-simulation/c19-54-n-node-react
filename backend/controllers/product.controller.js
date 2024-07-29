@@ -99,14 +99,50 @@ const createProduct = async (req, res) => {
 }
 
 const updateProduct = async (req, res) => {
+  upload.fields([])(req, res, async err => {
+    if (err) {
+      return res.status(500).json({ status: 'Failed', message: err.message })
+    }
+  try {
+   
+    const productId = req.params.id
+    const body = req.body
+    const product = await Product.findById(productId)
+    if (!product) {
+      return res.status(404).json({
+        status: 'Failed',
+        message: 'Store not found'
+      })
+    } 
 
+    product.name = (body.name != null && body.name != undefined) ? body.name : product.name
+    product.description = (body.description != null && body.description != undefined) ? body.description : product.description
+    product.originalPrice = (body.originalPrice != null && body.originalPrice != undefined) ? body.originalPrice : product.originalPrice
+    product.stock = (body.stock != null && body.stock != undefined) ? body.stock : product.stock
+    product.categories = (body.categories != null && body.categories != undefined) ? body.categories : product.categories
+    if (body.salePrice != undefined) {
+      product.salePrice = (body.salePrice != null && body.salePrice != undefined) ? body.salePrice : product.salePrice
+    }
+    product.save()
+
+    return res.status(200).json({
+      status: 'Success',
+      data: { product }
+    })
+
+  } catch (err) {
+    res.status(500).json({
+      status: 'Failed',
+      message: err.message
+    })
+  }
+})
 }
 
 const updateProductStatus = async (req, res) => {
   try {
     const productId = req.params.id
     const status = req.params.status
-    const filter = {_id: productId}
 
     const product = await Product.findById(productId)
     if (!product) {
