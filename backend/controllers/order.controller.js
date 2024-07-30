@@ -54,47 +54,47 @@ const getOrderById = async (req, res) => {
 }
 
 const createOrder = async (req, res) => {
-    upload.fields([{ name: 'images', maxCount: 5 }])(req, res, async err => {
-      if (err) {
-        return res.status(500).json({ status: 'Failed', message: err.message })
-      } 
-      try {
-        const body = req.body
-        const products = (JSON.parse(body.products)).products
-        let total = 0
+  upload.fields([{ name: 'images', maxCount: 5 }])(req, res, async err => {
+    if (err) {
+      return res.status(500).json({ status: 'Failed', message: err.message })
+    }
+    try {
+      const body = req.body
+      const products = (JSON.parse(body.products)).products
+      let total = 0
 
-        if (products && products.length > 0) {
+      if (products && products.length > 0) {
         const productArray = []
-          for (let i = 0; i < products.length; i++) {
+        for (let i = 0; i < products.length; i++) {
           productArray.push(products[0])
           total += products[0].price
-          }
-  
-          const newOrder = new Order({
-            storeId: body.storeId,
-            userId: body.userId,
-            shippingAddress: JSON.parse(body.shippingAddress),
+        }
+
+        const newOrder = new Order({
+          storeId: body.storeId,
+          userId: body.userId,
+          shippingAddress: JSON.parse(body.shippingAddress),
           status: 'Pending',
           products: productArray, // por que le crea un _id a cada producto?
           total
-          })
-          await newOrder.save()
-          return res.status(200).json({
-            status: 'Success',
-            data: { newOrder }
-          })
-        } else {
-          return res
-            .status(400)
-          .json({ status: 'Failed', message: 'Debes enviar un producto' })
-        }
-      } catch (err) {
-        res.status(500).json({
-          status: 'Failed',
-          message: err.message
         })
+        await newOrder.save()
+        return res.status(200).json({
+          status: 'Success',
+          data: { newOrder }
+        })
+      } else {
+        return res
+          .status(400)
+          .json({ status: 'Failed', message: 'Debes enviar un producto' })
       }
-    })
+    } catch (err) {
+      res.status(500).json({
+        status: 'Failed',
+        message: err.message
+      })
+    }
+  })
 }
 
 const updateOrder = async (req, res) => {
