@@ -17,12 +17,12 @@ export default function Navbar() {
     {
       nombre: "Productos",
       icono: <PackageSearchIcon />,
-      link: "/products",
+      link: "/#products",
     },
     {
       nombre: "Sos Vendedor",
       icono: <BadgeDollarSignIcon />,
-      link: "/sellers",
+      link: "/SellerRegister",
     },
     {
       nombre: "Quienes somos",
