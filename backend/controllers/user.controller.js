@@ -3,6 +3,11 @@ import { uploadFile } from '../utils/uploadFile.js'
 import { upload } from '../config/multer.js'
 import mongoose from 'mongoose'
 
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
+
+const CryptoJS = require('crypto-js')
+
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.find({})
@@ -70,7 +75,10 @@ const createUser = (req, res) => {
         const newUser = new User({
           name: body.name,
           email: body.email,
-          password: body.password,
+          password: CryptoJS.AES.encrypt(
+            body.password,
+            process.env.PASS_SEC
+          ).toString(),
           image: downloadURL,
           billingAddress: JSON.parse(body.billingAddress),
           shippingAddress: JSON.parse(body.shippingAddress),
@@ -96,11 +104,86 @@ const createUser = (req, res) => {
 }
 
 const updateUser = async (req, res) => {
-  // Código para actualizar usuario
+  upload.fields([])(req, res, async err => {
+    if (err) {
+      return res.status(500).json({ status: 'Failed', message: err.message })
+    }
+    try {
+      const userId = req.params.id
+      const body = req.body
+      const user = await User.findById(userId)
+      if (!user) {
+        return res.status(404).json({
+          status: 'Failed',
+          message: 'User not found'
+        })
+      }
+
+      user.name = (body.name !== null && body.name !== undefined) ? body.name : user.name
+      user.email = (body.email !== null && body.email !== undefined) ? body.email : user.email
+      user.billingAddress = (body.billingAddress !== null && body.billingAddress !== undefined) ? body.billingAddress : user.billingAddress
+      user.shippingAddress = (body.shippingAddress !== null && body.shippingAddress !== undefined) ? body.shippingAddress : user.shippingAddress
+      user.roles = (body.roles !== null && body.roles !== undefined) ? body.roles : user.roles
+      user.password = (body.password !== null && body.password !== undefined) ? CryptoJS.AES.encrypt(body.password, process.env.PASS_SEC).toString() : user.password
+      user.save()
+
+      return res.status(200).json({
+        status: 'Success',
+        data: { user }
+      })
+    } catch (err) {
+      res.status(500).json({
+        status: 'Failed',
+        message: err.message
+      })
+    }
+  })
 }
 
 const deleteUser = async (req, res) => {
-  // Código para eliminar usuario
+  try {
+    await User.findByIdAndDelete(req.params.id)
+    res.status(200).json(`User with id = ${req.params.id} deleted`)
+  } catch (err) {
+    res.status(500).json({
+      status: 'Failed',
+      message: err.message
+    })
+  }
+}
+
+const getUsersByRole = async (req, res) => {
+  try {
+    const role = req.params.role
+
+    const users = await User.find(
+      {
+        roles: {
+          $in: [role]
+        }
+      }
+    ).sort({ createdAt: -1 })
+
+    if (!users) {
+      return res.status(404).json({
+        status: 'Failed',
+        message: 'Users not found'
+      })
+    }
+
+    res.status(200).json({
+      status: 'Success',
+      data: {
+        users
+      }
+    })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({
+      status: 'Failed',
+      message: err.message
+    })
+  }
 }
 
 export const controllers = {
@@ -108,5 +191,6 @@ export const controllers = {
   getUserById,
   createUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  getUsersByRole
 }

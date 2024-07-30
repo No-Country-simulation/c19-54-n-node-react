@@ -4,7 +4,7 @@ import sharp from 'sharp'
 import { v4 } from 'uuid'
 
 export async function uploadFile (file) {
-  let fileBuffer = await sharp(file.buffer)
+  const fileBuffer = await sharp(file.buffer)
     .resize(600, 600, {
       fit: 'contain',
       background: { r: 0, g: 0, b: 0, alpha: 0 }
