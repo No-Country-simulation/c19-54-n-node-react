@@ -10,9 +10,9 @@ El proyecto se centra en el desarrollo de una plataforma de e-commerce diseñada
 #### Colaboradores:
 
 - Maria Cristina Gutiérrez - Frontend
-- Sacchini Tomas - Frontend
+- Tomas Sacchini - Frontend
 - Luiggy Carlin Felix - Frontend
-- Raul Quispe Díaz desarrollador Frontend
+- Raul Quispe Díaz - Frontend / Backend
 - Carlos Malissia - Frontend /  UX/UI
 - Alejandra Len - UX/UI
 - Matias Martin Murad Pretz - Backend
@@ -27,6 +27,11 @@ El proyecto se centra en el desarrollo de una plataforma de e-commerce diseñada
 - [Backlog](https://github.com/orgs/No-Country-simulation/projects/17)
 
 #### Tecnologías utilizadas:
+![MongoDB](https://img.shields.io/badge/-MongoDB-05122A?style=flat&logo=mongodb)&nbsp;
 ![Express](https://img.shields.io/badge/-Express-05122A?style=flat&logo=express)&nbsp;
 ![React](https://img.shields.io/badge/-React-05122A?style=flat&logo=react)&nbsp;
 ![Node.js](https://img.shields.io/badge/-Node.js-05122A?style=flat&logo=node.js)&nbsp;
+
+![Next.js](https://img.shields.io/badge/-Next.js-05122A?style=flat&logo=next.js)&nbsp;
+![Firebase](https://img.shields.io/badge/-Firebase-05122A?style=flat&logo=firebase)&nbsp;
+![Sharp.js](https://img.shields.io/badge/-Sharp-05122A?style=flat&logo=sharp)&nbsp;
