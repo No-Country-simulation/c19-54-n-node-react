@@ -12,12 +12,11 @@ El proyecto se centra en el desarrollo de una plataforma de e-commerce diseñada
 - Maria Cristina Gutiérrez - Frontend
 - Tomas Sacchini - Frontend
 - Luiggy Carlin Felix - Frontend
-- Raul Quispe Díaz - Frontend / Backend
+
 - Carlos Malissia - Frontend /  UX/UI
 - Alejandra Len - UX/UI
 - Matias Martin Murad Pretz - Backend
 - Lucila Chaparro - Backend
-- Eric Yoel Ferreyra - Backend
 - Valentino Boggio - Backend
 - Aineska Zacarias - QA
 

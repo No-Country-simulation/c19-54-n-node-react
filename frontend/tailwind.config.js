@@ -21,7 +21,8 @@ module.exports = {
       "dark-aqua": "#61C9A8",
       "dark-pink": "#BA3B46",
       "gradient": "#000000b3",
-      "b-green": "#61C9A8"
+      "b-green": "#3C826C",
+      "white": "#ffffff"
     },
   },
   plugins: [],
