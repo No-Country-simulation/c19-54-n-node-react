@@ -444,4 +444,302 @@
  *                 message:
  *                   type: string
  *                   example: Internal server error
+ * 
+ * /stores/{id}/orders:
+ *   get:
+ *     tags:
+ *       - Orders
+ *     summary: Get all orders for a specific store
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: The ID of the store
+ *         schema:
+ *           type: string
+ *           example: 60d21b4667d0d8992e610c85
+ *     responses:
+ *       '200':
+ *         description: Successfully retrieved orders
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: Success
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     orders:
+ *                       type: array
+ *                       items:
+ *                         type: object
+ *                         properties:
+ *                           _id:
+ *                             type: string
+ *                             example: 60d21b4667d0d8992e610c85
+ *                           status:
+ *                             type: string
+ *                             example: Pending
+ *                           products:
+ *                             type: array
+ *                             items:
+ *                               type: object
+ *                               properties:
+ *                                 productId:
+ *                                   type: string
+ *                                   example: 60d21b4667d0d8992e610c86
+ *                                 quantity:
+ *                                   type: number
+ *                                   example: 2
+ *                                 price:
+ *                                   type: string
+ *                                   example: 19.99
+ *                           shippingAddress:
+ *                             type: object
+ *                             properties:
+ *                               country:
+ *                                 type: string
+ *                                 example: USA
+ *                               street1:
+ *                                 type: string
+ *                                 example: 123 Main St
+ *                               street2:
+ *                                 type: string
+ *                                 example: Apt 4
+ *                               city:
+ *                                 type: string
+ *                                 example: New York
+ *                               province:
+ *                                 type: string
+ *                                 example: NY
+ *                               zip:
+ *                                 type: string
+ *                                 example: 10001
+ *                           billingAddress:
+ *                             type: object
+ *                             properties:
+ *                               country:
+ *                                 type: string
+ *                                 example: USA
+ *                               street1:
+ *                                 type: string
+ *                                 example: 123 Main St
+ *                               street2:
+ *                                 type: string
+ *                                 example: Apt 4
+ *                               city:
+ *                                 type: string
+ *                                 example: New York
+ *                               province:
+ *                                 type: string
+ *                                 example: NY
+ *                               zip:
+ *                                 type: string
+ *                                 example: 10001
+ *                           userId:
+ *                             type: string
+ *                             example: 60d21b4667d0d8992e610c87
+ *                           storeId:
+ *                             type: string
+ *                             example: 60d21b4667d0d8992e610c88
+ *                           total:
+ *                             type: number
+ *                             example: 39.98
+ *                           createdAt:
+ *                             type: string
+ *                             example: 2024-07-31T16:48:06.581Z
+ *                           updatedAt:
+ *                             type: string
+ *                             example: 2024-07-31T16:48:06.581Z
+ *       '400':
+ *         description: Invalid store ID
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: Failed
+ *                 message:
+ *                   type: string
+ *                   example: Invalid store ID
+ *       '404':
+ *         description: Orders not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: Failed
+ *                 message:
+ *                   type: string
+ *                   example: Orders not found
+ *       '500':
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: Failed
+ *                 message:
+ *                   type: string
+ *                   example: Internal server error
+ * 
+ * /users/{id}/orders:
+ *   get:
+ *     tags:
+ *       - Orders
+ *     summary: Get all orders for a specific user
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: The ID of the user
+ *         schema:
+ *           type: string
+ *           example: 60d21b4667d0d8992e610c87
+ *     responses:
+ *       '200':
+ *         description: Successfully retrieved orders
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: Success
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     orders:
+ *                       type: array
+ *                       items:
+ *                         type: object
+ *                         properties:
+ *                           _id:
+ *                             type: string
+ *                             example: 60d21b4667d0d8992e610c85
+ *                           status:
+ *                             type: string
+ *                             example: Pending
+ *                           products:
+ *                             type: array
+ *                             items:
+ *                               type: object
+ *                               properties:
+ *                                 productId:
+ *                                   type: string
+ *                                   example: 60d21b4667d0d8992e610c86
+ *                                 quantity:
+ *                                   type: number
+ *                                   example: 2
+ *                                 price:
+ *                                   type: string
+ *                                   example: 19.99
+ *                           shippingAddress:
+ *                             type: object
+ *                             properties:
+ *                               country:
+ *                                 type: string
+ *                                 example: USA
+ *                               street1:
+ *                                 type: string
+ *                                 example: 123 Main St
+ *                               street2:
+ *                                 type: string
+ *                                 example: Apt 4
+ *                               city:
+ *                                 type: string
+ *                                 example: New York
+ *                               province:
+ *                                 type: string
+ *                                 example: NY
+ *                               zip:
+ *                                 type: string
+ *                                 example: 10001
+ *                           billingAddress:
+ *                             type: object
+ *                             properties:
+ *                               country:
+ *                                 type: string
+ *                                 example: USA
+ *                               street1:
+ *                                 type: string
+ *                                 example: 123 Main St
+ *                               street2:
+ *                                 type: string
+ *                                 example: Apt 4
+ *                               city:
+ *                                 type: string
+ *                                 example: New York
+ *                               province:
+ *                                 type: string
+ *                                 example: NY
+ *                               zip:
+ *                                 type: string
+ *                                 example: 10001
+ *                           userId:
+ *                             type: string
+ *                             example: 60d21b4667d0d8992e610c87
+ *                           storeId:
+ *                             type: string
+ *                             example: 60d21b4667d0d8992e610c88
+ *                           total:
+ *                             type: number
+ *                             example: 39.98
+ *                           createdAt:
+ *                             type: string
+ *                             example: 2024-07-31T16:48:06.581Z
+ *                           updatedAt:
+ *                             type: string
+ *                             example: 2024-07-31T16:48:06.581Z
+ *       '400':
+ *         description: Invalid user ID
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: Failed
+ *                 message:
+ *                   type: string
+ *                   example: Invalid user ID
+ *       '404':
+ *         description: Orders not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: Failed
+ *                 message:
+ *                   type: string
+ *                   example: Orders not found
+ *       '500':
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   example: Failed
+ *                 message:
+ *                   type: string
+ *                   example: Internal server error
  */
