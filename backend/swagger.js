@@ -13,7 +13,7 @@ const options = {
       version: '1.0.11'
     }
   },
-  apis: ['./swagger/users.docs.js', './swagger/stores.docs.js', './swagger/products.docs.js']
+  apis: ['./swagger/*.js']
 }
 
 const swaggerSpec = swaggerJSDoc(options)
