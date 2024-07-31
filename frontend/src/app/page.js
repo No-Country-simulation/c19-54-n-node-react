@@ -1,4 +1,6 @@
+
 import Carrousel from "../components/carrousel";
+
 import Link from "next/link";
 
 export default function Home() {
