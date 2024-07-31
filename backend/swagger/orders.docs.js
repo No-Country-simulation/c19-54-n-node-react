@@ -445,7 +445,7 @@
  *                   type: string
  *                   example: Internal server error
  * 
- * /stores/{id}/orders:
+ * /orders/store/{id}:
  *   get:
  *     tags:
  *       - Orders
@@ -594,7 +594,7 @@
  *                   type: string
  *                   example: Internal server error
  * 
- * /users/{id}/orders:
+ * /orders/user/{id}:
  *   get:
  *     tags:
  *       - Orders
