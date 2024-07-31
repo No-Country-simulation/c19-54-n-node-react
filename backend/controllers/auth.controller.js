@@ -15,32 +15,29 @@ const register = (req, res) => {
     try {
       const body = req.body
       const image = req.files ? req.files.image : null
+      const newUser = new User({
+        name: body.name,
+        email: body.email,
+        password: CryptoJS.AES.encrypt(
+          body.password,
+          process.env.PASS_SEC
+        ).toString(),
+        billingAddress: body.billingAddress == undefined ? "" : JSON.parse(body.billingAddress),
+        shippingAddress: body.shippingAddress == undefined ? "" : JSON.parse(body.shippingAddress),
+        roles: body.roles.split(',')
+      })
 
       if (image && image.length > 0) {
         const { downloadURL } = await uploadFile(image[0])
-
-        const newUser = new User({
-          name: body.name,
-          email: body.email,
-          password: CryptoJS.AES.encrypt(
-            body.password,
-            process.env.PASS_SEC
-          ).toString(),
-          image: downloadURL,
-          billingAddress: JSON.parse(body.billingAddress),
-          shippingAddress: JSON.parse(body.shippingAddress),
-          roles: body.roles.split(',')
-        })
-        await newUser.save()
-        return res.status(200).json({
+        newUser.image = downloadURL
+      }  
+        
+      await newUser.save()
+      return res.status(200).json({
           status: 'Success',
           data: { newUser }
         })
-      } else {
-        return res
-          .status(400)
-          .json({ status: 'Failed', message: 'Debes enviar una imagen' })
-      }
+
     } catch (err) {
       res.status(500).json({
         status: 'Failed',
