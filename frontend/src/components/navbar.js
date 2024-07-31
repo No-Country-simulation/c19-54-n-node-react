@@ -81,10 +81,12 @@ export default function Navbar() {
         </div>
 
         <div className='flex items-center justify-between gap-5'>
-          <div className="flex flex-nowrap items-center cursor-pointer text-xs text-brown hover:text-light-brown">
-            <User strokeWidth={1} />
-            <p className="hover:underline underline-offset-1"> Ingresá</p>
-          </div>
+          <Link href="/Login">
+            <div className="flex flex-nowrap items-center cursor-pointer text-xs text-brown hover:text-light-brown">
+              <User strokeWidth={1} />
+              <p className="hover:underline underline-offset-1"> Ingresá</p>
+            </div>
+          </Link>
           <Link href="/CartDetail">
             <div className="flex">
               <ShoppingBagIcon strokeWidth="1" className='cursor-pointer  text-brown  hover:text-light-brown' />
