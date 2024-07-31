@@ -239,7 +239,7 @@
  *                 message:
  *                   type: string
  *                   example: Internal server error
- * 
+ *
  * /orders/{id}:
  *   get:
  *     tags:
@@ -384,7 +384,7 @@
  *                 message:
  *                   type: string
  *                   example: Internal server error
- *      
+ *
  *   delete:
  *     tags:
  *       - Orders
@@ -444,7 +444,7 @@
  *                 message:
  *                   type: string
  *                   example: Internal server error
- * 
+ *
  * /orders/store/{id}:
  *   get:
  *     tags:
@@ -593,7 +593,7 @@
  *                 message:
  *                   type: string
  *                   example: Internal server error
- * 
+ *
  * /orders/user/{id}:
  *   get:
  *     tags:

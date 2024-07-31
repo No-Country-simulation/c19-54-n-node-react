@@ -256,7 +256,7 @@
  *                   example: Failed
  *                 message:
  *                   type: string
- * 
+ *
  *   put:
  *     tags:
  *       - Stores
@@ -348,7 +348,7 @@
  *                 message:
  *                   type: string
  *                   example: Internal server error
- * 
+ *
  *   delete:
  *     tags:
  *       - Stores
@@ -382,7 +382,7 @@
  *                 message:
  *                   type: string
  *                   example: Internal server error
- * 
+ *
  * /stores/user/{id}:
  *   get:
  *     tags:

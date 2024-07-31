@@ -173,7 +173,7 @@
  *                   example: Failed
  *                 message:
  *                   type: string
- * 
+ *
  * /auth/login:
  *   post:
  *     tags:

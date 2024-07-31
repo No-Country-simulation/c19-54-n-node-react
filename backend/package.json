@@ -1,6 +1,6 @@
 {
     "name": "arte-sano-api",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "description": "API",
     "main": "index.js",
     "type": "module",

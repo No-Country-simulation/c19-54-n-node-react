@@ -287,7 +287,7 @@
  *                   example: Failed
  *                 message:
  *                   type: string
- *    
+ *
  *    put:
  *     tags:
  *       - Products
@@ -423,7 +423,7 @@
  *                 message:
  *                   type: string
  *                   example: Internal server error
- * 
+ *
  *    delete:
  *     tags:
  *       - Products
@@ -457,7 +457,7 @@
  *                 message:
  *                   type: string
  *                   example: Internal server error
- * 
+ *
  * /products/{id}/{status}:
  *   put:
  *     tags:
@@ -561,7 +561,7 @@
  *                 message:
  *                   type: string
  *                   example: Internal server error
- * 
+ *
  * /products/store/{id}:
  *   get:
  *     tags:
@@ -670,7 +670,7 @@
  *                 message:
  *                   type: string
  *                   example: Internal server error
- * 
+ *
  * /products/category/{cat}:
  *   get:
  *     tags:
