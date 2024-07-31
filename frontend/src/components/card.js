@@ -10,7 +10,7 @@ export default function Card({ props }) {
     <Link href={`/Detail/${_id}`}>
       <div className="bg-cream p-1" id={_id}>
         <div className="p-2 w-[185px] h-[327px] md:w-auto lg:w-auto md:h-auto lg:h-auto lg:m-2 bg-amber rounded-lg flex flex-col justify-between">
-          <div className="flex flex-row flex-nowrap justify-between items-start">
+          <div className="flex flex-row flex-nowrap justify-between items-start text-gradient">
             <h2 className="text-sm text-dark-pink">
               {categories[0] ? categories[0] : "Categoría"}
             </h2>
@@ -42,8 +42,9 @@ export default function Card({ props }) {
           </div>
           <div className="flex flex-row flex-nowrap justify-around items-center bg-cream rounded-b-xl p-1">
             <p className="bg-dark-aqua text-xs text-center text-brown rounded-full pl-1 pr-1">
-              "3 cuotas s/int"
-            </p>
+              3 cuotas s/int
+            </p>            
+
             <button className="bg-dark-aqua text-brown text-bold rounded-full pr-2 pl-2">
               +
             </button>
