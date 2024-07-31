@@ -68,32 +68,31 @@ const createUser = (req, res) => {
     try {
       const body = req.body
       const image = req.files ? req.files.image : null
+      let downloadURL = null
 
       if (image && image.length > 0) {
-        const { downloadURL } = await uploadFile(image[0])
-
-        const newUser = new User({
-          name: body.name,
-          email: body.email,
-          password: CryptoJS.AES.encrypt(
-            body.password,
-            process.env.PASS_SEC
-          ).toString(),
-          image: downloadURL,
-          billingAddress: JSON.parse(body.billingAddress),
-          shippingAddress: JSON.parse(body.shippingAddress),
-          roles: body.roles.split(',')
-        })
-        await newUser.save()
-        return res.status(200).json({
-          status: 'Success',
-          data: { newUser }
-        })
-      } else {
-        return res
-          .status(400)
-          .json({ status: 'Failed', message: 'Debes enviar una imagen' })
+        const uploadResult = await uploadFile(image[0])
+        downloadURL = uploadResult.downloadURL
       }
+
+      const newUser = new User({
+        name: body.name,
+        email: body.email,
+        password: CryptoJS.AES.encrypt(
+          body.password,
+          process.env.PASS_SEC
+        ).toString(),
+        image: downloadURL, // Esto será null si no se subió una imagen
+        billingAddress: JSON.parse(body.billingAddress),
+        shippingAddress: JSON.parse(body.shippingAddress),
+        roles: body.roles.split(',')
+      })
+
+      await newUser.save()
+      return res.status(200).json({
+        status: 'Success',
+        data: { newUser }
+      })
     } catch (err) {
       res.status(500).json({
         status: 'Failed',
@@ -119,12 +118,28 @@ const updateUser = async (req, res) => {
         })
       }
 
-      user.name = (body.name !== null && body.name !== undefined) ? body.name : user.name
-      user.email = (body.email !== null && body.email !== undefined) ? body.email : user.email
-      user.billingAddress = (body.billingAddress !== null && body.billingAddress !== undefined) ? body.billingAddress : user.billingAddress
-      user.shippingAddress = (body.shippingAddress !== null && body.shippingAddress !== undefined) ? body.shippingAddress : user.shippingAddress
-      user.roles = (body.roles !== null && body.roles !== undefined) ? body.roles : user.roles
-      user.password = (body.password !== null && body.password !== undefined) ? CryptoJS.AES.encrypt(body.password, process.env.PASS_SEC).toString() : user.password
+      user.name =
+        body.name !== null && body.name !== undefined ? body.name : user.name
+      user.email =
+        body.email !== null && body.email !== undefined
+          ? body.email
+          : user.email
+      user.billingAddress =
+        body.billingAddress !== null && body.billingAddress !== undefined
+          ? body.billingAddress
+          : user.billingAddress
+      user.shippingAddress =
+        body.shippingAddress !== null && body.shippingAddress !== undefined
+          ? body.shippingAddress
+          : user.shippingAddress
+      user.roles =
+        body.roles !== null && body.roles !== undefined
+          ? body.roles
+          : user.roles
+      user.password =
+        body.password !== null && body.password !== undefined
+          ? CryptoJS.AES.encrypt(body.password, process.env.PASS_SEC).toString()
+          : user.password
       user.save()
 
       return res.status(200).json({
@@ -156,13 +171,11 @@ const getUsersByRole = async (req, res) => {
   try {
     const role = req.params.role
 
-    const users = await User.find(
-      {
-        roles: {
-          $in: [role]
-        }
+    const users = await User.find({
+      roles: {
+        $in: [role]
       }
-    ).sort({ createdAt: -1 })
+    }).sort({ createdAt: -1 })
 
     if (!users) {
       return res.status(404).json({
