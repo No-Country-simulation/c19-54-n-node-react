@@ -38,7 +38,7 @@ const Login = () => {
     return (
         <div className="min-h-screen  flex  justify-center bg-white text-brown">
             <div className="p-4 rounded shadow-xl w-[274px] flex flex-col">
-                <h1 className=" text-xl font-bold text-center font-roboto  mx-auto mt-4 mb-8">
+                <h1 className=" text-xl font-bold text-center font-roboto  mx-auto mt-4 mb-2">
                     Iniciar sesión
                 </h1>
                 <form onSubmit={handleLoginSubmit}>

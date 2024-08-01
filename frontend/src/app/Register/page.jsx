@@ -12,12 +12,13 @@ const Register = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = handleSubmit(async data => {
-    data.roles = ["user"]
+    data.roles = "user"
+    console.log(data);
     const res = await fetch('https://api-react-node.vercel.app/auth/register', {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: data,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'multipart/form-data'
       }
     });
     const resJson = await res.json()
