@@ -15,6 +15,18 @@ const register = (req, res) => {
     try {
       const body = req.body
       const image = req.files ? req.files.image : null
+
+      // Verificar que roles está definido y es una cadena
+      const roles = body.roles ? body.roles.split(',') : []
+
+      // Verificar y parsear direcciones
+      const billingAddress = body.billingAddress
+        ? JSON.parse(body.billingAddress)
+        : {}
+      const shippingAddress = body.shippingAddress
+        ? JSON.parse(body.shippingAddress)
+        : {}
+
       const newUser = new User({
         name: body.name,
         email: body.email,
@@ -22,22 +34,21 @@ const register = (req, res) => {
           body.password,
           process.env.PASS_SEC
         ).toString(),
-        billingAddress: body.billingAddress == undefined ? "" : JSON.parse(body.billingAddress),
-        shippingAddress: body.shippingAddress == undefined ? "" : JSON.parse(body.shippingAddress),
-        roles: body.roles.split(',')
+        billingAddress: billingAddress,
+        shippingAddress: shippingAddress,
+        roles: roles
       })
 
       if (image && image.length > 0) {
         const { downloadURL } = await uploadFile(image[0])
         newUser.image = downloadURL
-      }  
-        
+      }
+
       await newUser.save()
       return res.status(200).json({
-          status: 'Success',
-          data: { newUser }
-        })
-
+        status: 'Success',
+        data: { newUser }
+      })
     } catch (err) {
       res.status(500).json({
         status: 'Failed',
@@ -54,11 +65,9 @@ const login = async (req, res) => {
     }
     try {
       const email = req.body.email
-      const user = await User.findOne(
-        {
-          email
-        }
-      )
+      const user = await User.findOne({
+        email
+      })
       if (!user) {
         return res.status(404).json({
           status: 'Failed',
@@ -76,7 +85,7 @@ const login = async (req, res) => {
       const inputPassword = req.body.password
 
       originalPassword !== inputPassword &&
-            res.status(401).json('Wrong Password')
+        res.status(401).json('Wrong Password')
 
       const accessToken = jwt.sign(
         {
