@@ -103,13 +103,20 @@ const createUser = (req, res) => {
 }
 
 const updateUser = async (req, res) => {
-  upload.fields([])(req, res, async err => {
+  upload.fields([{ name: 'image', maxCount: 1 }])(req, res, async err => {
     if (err) {
       return res.status(500).json({ status: 'Failed', message: err.message })
     }
     try {
       const userId = req.params.id
       const body = req.body
+      const image = req.files ? req.files.image : null
+      let downloadURL = null
+
+      if (image && image.length > 0) {
+        const uploadResult = await uploadFile(image[0])
+        downloadURL = uploadResult.downloadURL
+      }
       const user = await User.findById(userId)
       if (!user) {
         return res.status(404).json({
@@ -140,6 +147,8 @@ const updateUser = async (req, res) => {
         body.password !== null && body.password !== undefined
           ? CryptoJS.AES.encrypt(body.password, process.env.PASS_SEC).toString()
           : user.password
+      user.image = downloadURL !== null ? downloadURL : user.image
+
       user.save()
 
       return res.status(200).json({

@@ -62,13 +62,14 @@ const createStore = async (req, res) => {
     try {
       const body = req.body
       const images = req.files ? req.files.images : null
+      let imageArray = []
 
       if (images && images.length > 0) {
-        const imageArray = []
         for (let i = 0; i < images.length; i++) {
           const { downloadURL } = await uploadFile(images[i])
           imageArray.push(downloadURL)
         }
+      }
 
         const newStore = new Store({
           name: body.name,
@@ -82,11 +83,6 @@ const createStore = async (req, res) => {
           status: 'Success',
           data: { newStore }
         })
-      } else {
-        return res
-          .status(400)
-          .json({ status: 'Failed', message: 'Debes enviar una imagen' })
-      }
     } catch (err) {
       res.status(500).json({
         status: 'Failed',
@@ -97,7 +93,7 @@ const createStore = async (req, res) => {
 }
 
 const updateStore = async (req, res) => {
-  upload.fields([])(req, res, async err => {
+  upload.fields([{ name: 'image', maxCount: 1 }])(req, res, async err => {
     if (err) {
       return res.status(500).json({ status: 'Failed', message: err.message })
     }
@@ -112,9 +108,19 @@ const updateStore = async (req, res) => {
         })
       }
 
+      const images = req.files ? req.files.images : null
+      let imageArray = []
+
+      if (images && images.length > 0) {
+        for (let i = 0; i < images.length; i++) {
+          const { downloadURL } = await uploadFile(images[i])
+          imageArray.push(downloadURL)
+        }
+      }
+
       store.name = (body.name !== null && body.name !== undefined) ? body.name : store.name
       store.intro = (body.intro !== null && body.intro !== undefined) ? body.intro : store.intro
-
+      store.images = imageArray == [] ? imageArray : store.images 
       store.save()
 
       return res.status(200).json({

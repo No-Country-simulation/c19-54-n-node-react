@@ -62,13 +62,14 @@ const createProduct = async (req, res) => {
     try {
       const body = req.body
       const images = req.files ? req.files.images : null
+      let imageArray = []
 
       if (images && images.length > 0) {
-        const imageArray = []
         for (let i = 0; i < images.length; i++) {
           const { downloadURL } = await uploadFile(images[i])
           imageArray.push(downloadURL)
         }
+      }
 
         const newProduct = new Product({
           name: body.name,
@@ -84,11 +85,7 @@ const createProduct = async (req, res) => {
           status: 'Success',
           data: { newProduct }
         })
-      } else {
-        return res
-          .status(400)
-          .json({ status: 'Failed', message: 'Debes enviar una imagen' })
-      }
+
     } catch (err) {
       res.status(500).json({
         status: 'Failed',
@@ -99,7 +96,7 @@ const createProduct = async (req, res) => {
 }
 
 const updateProduct = async (req, res) => {
-  upload.fields([])(req, res, async err => {
+  upload.fields([{ name: 'image', maxCount: 1 }])(req, res, async err => {
     if (err) {
       return res.status(500).json({ status: 'Failed', message: err.message })
     }
@@ -114,6 +111,16 @@ const updateProduct = async (req, res) => {
         })
       }
 
+      const images = req.files ? req.files.images : null
+      let imageArray = []
+
+      if (images && images.length > 0) {
+        for (let i = 0; i < images.length; i++) {
+          const { downloadURL } = await uploadFile(images[i])
+          imageArray.push(downloadURL)
+        }
+      }
+
       product.name = (body.name !== null && body.name !== undefined) ? body.name : product.name
       product.description = (body.description !== null && body.description !== undefined) ? body.description : product.description
       product.originalPrice = (body.originalPrice !== null && body.originalPrice !== undefined) ? body.originalPrice : product.originalPrice
@@ -122,6 +129,7 @@ const updateProduct = async (req, res) => {
       if (body.salePrice !== undefined) {
         product.salePrice = (body.salePrice !== null && body.salePrice !== undefined) ? body.salePrice : product.salePrice
       }
+      product.images = imageArray == [] ? imageArray : product.images 
       product.save()
 
       return res.status(200).json({
