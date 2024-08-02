@@ -30,7 +30,6 @@ El proyecto se centra en el desarrollo de una plataforma de e-commerce diseñada
 
 - Matias Martin Murad Pretz
 - Lucila Chaparro
-- Eric Yoel Ferreyra
 - Valentino Boggio
 
 ### UX/UI
