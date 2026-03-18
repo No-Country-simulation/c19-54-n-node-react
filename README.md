@@ -50,7 +50,12 @@ El proyecto se centra en el desarrollo de una plataforma de e-commerce diseñada
 
 ## Tecnologías:
 
-![MongoDB](https://img.shields.io/badge/-MongoDB-05122A?style=flat&logo=mongodb)&nbsp;
+![MongoDB](https://img.shields.io/badge/-MongoDB-05122Astyle=flat&logo=mongodb)&nbsp;
+
+## Estado del proyecto
+Proyecto realizado en simulación laboral.
+Mi rol fue frontend.
+Actualmente archivado y sin mantenimiento.
 ![Express](https://img.shields.io/badge/-Express-05122A?style=flat&logo=express)&nbsp;
 ![React](https://img.shields.io/badge/-React-05122A?style=flat&logo=react)&nbsp;
 ![Node.js](https://img.shields.io/badge/-Node.js-05122A?style=flat&logo=node.js)&nbsp;
